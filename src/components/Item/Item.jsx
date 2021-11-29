@@ -11,7 +11,7 @@ export default function Item({ id, title, pictureUrl, btn, stock, products}) {
             <Link to={`/producto/${id}`}>
             <button className="btn-detail">{btn}</button>
             </Link>
-            <h2 className="title-stock">{stock}</h2> 
+            <h2 className="title-stock">Stock: {stock}</h2> 
         </div>
     )
 }
