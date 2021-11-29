@@ -1,3 +1,16 @@
+# Ecommerce para mobiles
+
+Simple tienda de mobiles MAC
+
+* Posee una langing principal
+* Filtrado por categoria
+* Cada Producto posee un detalle el cual permite finalizar la compra
+
+# Dependencias
+* React Router Dom
+
+# [Demo en funcionamiento](https://github.com/alelacroa/ecommerce-funcionando/blob/master/ecommerce.gif)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
