@@ -9,6 +9,7 @@ Simple tienda de mobiles MAC
 # Dependencias
 * React Router Dom
 
+# Demo en funcionamiento
 ![Demo en funcionamiento](https://github.com/alelacroa/ecommerce-funcionando/blob/master/ecommerce.gif)
 
 # Getting Started with Create React App
