@@ -26,10 +26,14 @@ const ItemDetailContainer = () => {
         });
     }, []);
 
+    const onAdd = (count)=>{
+        console.log({...detailProduct, cantidad:count} )
+    }
+
     return (
         loader ? <h1>Loading...</h1> :
         
-        <ItemDetail {...detailProduct} />
+        <ItemDetail {...detailProduct} onAdd={onAdd} />
     );
 };
 

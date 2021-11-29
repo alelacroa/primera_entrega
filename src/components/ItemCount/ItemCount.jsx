@@ -1,9 +1,13 @@
 import React, {useState } from 'react';
+import  {Link}  from 'react-router-dom';
+import '../ItemDetail/ItemDetail.css'
 
 
-const ItemCount = ({stock}) => {
+
+const ItemCount = ({stock, onAdd}) => {
     const [count, setCount] = useState(0);
-    console.log(stock)
+
+
     return (
         <>
         <h1 className={count > stock ? "positive" : null}>
@@ -16,6 +20,12 @@ const ItemCount = ({stock}) => {
         <button onClick={() => count !== 0 && setCount(count - 1)}>-</button>
         <button onClick={() => count !== stock && setCount(count + 1)}>+</button>
         </div>
+        <div className="cart-container">
+            <Link to="/">
+            <button className="btn-back">Volver</button>
+            </Link>
+            <button disabled={count ===0} onClick={()=>onAdd(count)} className="btn-cart">Agregar al Carrito</button>
+            </div>
         </>
 )
 }
