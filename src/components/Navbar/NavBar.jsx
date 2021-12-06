@@ -12,8 +12,9 @@ const NavBar = () => {
         <Link to="/categorias/iphoneX">Iphone X</Link>   
         <Link to="/categorias/iphone12">Iphone 12</Link>
         <Link to="/categorias/iphone13">Iphone 13</Link> 
+        <Link to="/cart"><CartWidget /></Link> 
         </ul>
-        <CartWidget />
+        
     </nav>
     )
 }

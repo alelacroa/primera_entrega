@@ -1,8 +1,9 @@
 import './ItemDetail.css';
-import ItemCount from '../ItemCount/ItemCount'
+import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
 
 
-export default function ItemDetail({ id, title, pictureUrl, stock, price, categoryId, onAdd }) {
+export default function ItemDetail({ id, title, pictureUrl, stock, price, categoryId, onAdd, goToCart }) {
     return (
         <div className="card">
             <h1 className="title-card" key={id}>{title}</h1>
@@ -11,8 +12,13 @@ export default function ItemDetail({ id, title, pictureUrl, stock, price, catego
             <h2 className="title-stock">Stock disponible {stock}</h2>
             <h2 className="title-stock">Capacidad: 120gb</h2>  
             <h2 className="title-stock">Precio $ {price}</h2>
-            
-            <ItemCount  stock={stock} onAdd={onAdd}/>
+            { goToCart ? 
+            (<>
+            <Link to="/cart"> Finalizar Compra</Link>
+            </>)
+            :
+            (<ItemCount  stock={stock} onAdd={onAdd}/>)
+            }
         </div>
     )
 }

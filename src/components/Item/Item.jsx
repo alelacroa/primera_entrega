@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import '../Item/Item.css'
 
 
-export default function Item({ id, title, pictureUrl, btn, stock, products}) {
+export default function Item({ id, title, pictureUrl, stock, products}) {
     return (
         <div className="card">
             <h1 className="title-card">{title}</h1>
             <img className="cardImg" src={pictureUrl} /> 
             <Link to={`/producto/${id}`}>
-            <button className="btn-detail">{btn}</button>
+            <button className="btn-detail">Detalle del producto</button>
             </Link>
             <h2 className="title-stock">Stock: {stock}</h2> 
         </div>
