@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext } from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import data from '../Item/items';
 import './ItemDetailContainer.css';
 import  {useParams}  from 'react-router-dom';
 import { CartContext } from '../../contex/CartContext';
+import {getFirestore, collection, getDocs} from '@firebase/firestore'
 
 const ItemDetailContainer = () => {
     const [detailProduct, setDetailProduct] = useState({});
@@ -14,26 +14,32 @@ const ItemDetailContainer = () => {
 
 
     useEffect(()=>{
-        setLoader(true);
-        const getDetailsProduct = new Promise ((res)=> {
-            setTimeout(() => {
-                res (data);
-            }, 1000);
-        });
-
-        getDetailsProduct.then((result)=>{ 
-            itemId && setDetailProduct (result.find((item) => item.id === 
-            itemId));
+        const db = getFirestore()
+        const ref = collection(db, 'products')
+        getDocs(ref).then((snapshot) => {
+            const prod = snapshot.docs.map((doc) => {
+                return {
+                id: doc.id,
+                ...doc.data(),
+                };
+            })
+            const getDetailProduct = prod.find((i)=> i.id === 
+            itemId); setDetailProduct(getDetailProduct)
         })
-        .finally(()=>{
+
+        .catch((error)=>
+            console.log(error)
+        )
+        .finally(()=>
             setLoader(false)
-        });
+        );
+
     }, []);
 
     const onAdd = (count)=>{
         addToCart(detailProduct, count)
         setGoToCart(true)
-    }
+    };
 
     return (
         loader ? <h1>Loading...</h1> :

@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.css';
-import data from '../Item/items';
 import  {useParams}  from 'react-router-dom';
-
+import {getFirestore, collection, getDocs} from '@firebase/firestore'
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([]);
@@ -11,25 +10,27 @@ const ItemListContainer = ({greeting}) => {
     const [loader, setLoader] = useState(true);
 
     useEffect(()=>{
-        setLoader(true);
-        const getProducts = new Promise ((resolve)=>{
-            setTimeout(()=>{
-                resolve (data);
-            }, 1000);
-        });
-        getProducts
-        .then((res)=>{
-            const filtrar = res.filter((prod)=> prod.categoryId === `${categoryId}`);
-            categoryId === undefined ? setProducts(res) : setProducts(filtrar)    
+        const db = getFirestore()
+        const ref = collection(db, 'products')
+        getDocs(ref).then((snapshot) => {
+            const prod = snapshot.docs.map((doc) => {
+                return {
+                id: doc.id,
+                ...doc.data(),
+                };
+            })
+            const filtrar = prod.filter((i)=> i.categoryId === `${categoryId}`);
+            categoryId === undefined ? setProducts(prod) : setProducts(filtrar)
         })
-        .catch((error)=>{
+        .catch((error)=>
             console.log(error)
-        })
-        .finally(()=>{
+        )
+        .finally(()=>
             setLoader(false)
-        });
+        );
     }, [categoryId]);
-
+    
+    console.log(categoryId)
     return ( loader ? <h1>Loading...</h1> :
         <div>
             <h1>{greeting}</h1>

@@ -3,7 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 
 
-export default function ItemDetail({ id, title, pictureUrl, stock, price, categoryId, onAdd, goToCart }) {
+export default function ItemDetail({ id, title, pictureUrl, stock, price, onAdd, goToCart }) {
     return (
         <div className="card">
             <h1 className="title-card" key={id}>{title}</h1>

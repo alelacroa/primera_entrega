@@ -18,5 +18,3 @@ const data = [
         price: 1500, 
         pictureUrl: 'https://res.cloudinary.com/daqo472cw/image/upload/v1638146366/iphone11-yellow-select-2019_gf0ynw.png'}
 ]
-
-export default data

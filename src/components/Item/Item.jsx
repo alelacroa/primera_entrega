@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Item/Item.css'
 
 
-export default function Item({ id, title, pictureUrl, stock, products}) {
+export default function Item({ id, title, pictureUrl, stock, categoryId}) {
     return (
         <div className="card">
             <h1 className="title-card">{title}</h1>

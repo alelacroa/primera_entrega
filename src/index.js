@@ -1,7 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCA-7X54AUmXr2KyT5hZLMk43pn7wYk9gM",
+  authDomain: "coderhousereact-f91eb.firebaseapp.com",
+  projectId: "coderhousereact-f91eb",
+  storageBucket: "coderhousereact-f91eb.appspot.com",
+  messagingSenderId: "660516282619",
+  appId: "1:660516282619:web:3e228ba62691cd89fe105e",
+  measurementId: "G-FR6736ZC51"
+};
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -9,8 +29,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
